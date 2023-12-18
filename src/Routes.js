@@ -1,6 +1,8 @@
 import { createBrowserRouter, createRoutesFromElements, Route } from "react-router-dom";
 import HomePage from "./pages/Home";
 import Products from "./pages/Products";
+import RootLayout from "./pages/Root";
+import Error from "./pages/Error";
 
 // const routeDefinations = createRoutesFromElements(
 //     <Route>
@@ -11,9 +13,15 @@ import Products from "./pages/Products";
 // const Router = createBrowserRouter(routeDefinations);
 
 const Router = createBrowserRouter([
-    {path: '/', element: <HomePage />},
-    {path: '/products', element: <Products />},
-    {},
+    {
+        path :'/',
+        element: <RootLayout />,
+        errorElement: <Error />,
+        children: [
+            {path: '/', element: <HomePage />},
+            {path: '/products', element: <Products />},      
+        ],
+    },
 ]);
 
 
