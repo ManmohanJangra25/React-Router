@@ -1,8 +1,9 @@
-import { createBrowserRouter, createRoutesFromElements, Route } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import HomePage from "./pages/Home";
 import Products from "./pages/Products";
 import RootLayout from "./pages/Root";
 import Error from "./pages/Error";
+import ProductDetailsPage from "./pages/ProductDetails";
 
 // const routeDefinations = createRoutesFromElements(
 //     <Route>
@@ -18,8 +19,12 @@ const Router = createBrowserRouter([
         element: <RootLayout />,
         errorElement: <Error />,
         children: [
-            {path: '/', element: <HomePage />},
-            {path: '/products', element: <Products />},      
+            // {path: '/', element: <HomePage />},
+            
+            //This is the default route (index property will set it to the default route '/')
+            {index: true, element: <HomePage />},
+            {path: '/products', element: <Products />},     
+            {path: '/products/:productId', element: <ProductDetailsPage/>} 
         ],
     },
 ]);
